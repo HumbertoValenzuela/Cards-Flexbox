@@ -1,0 +1,93 @@
+@import 'variables';
+@import 'mixins';
+
+body {
+    box-sizing: border-box;
+    background-color: $bodyBackground-color;
+}
+
+.contenedor {
+    max-width: $desktop;
+    margin: 0 auto;
+}
+
+h2 {
+    /* Para que esté en la parte superior */
+    flex: 0  1 100%; /* 0 para que no crezca y una base de 100%*/
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+h3 {
+    /* font de google */
+    font-family: $fuenteFamilia;
+    /* font google por default trae margin */
+    /* margin: 0; */
+    font-size: 1.8rem;
+}
+
+img {
+    max-width: 100%;/*Con esto la imagen será responsive*/
+}
+
+
+
+.entrada {
+        margin-bottom: 1rem;
+        box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.5);
+}
+
+.contenido {
+    background-color: $blanco;    
+    /* centrar todos los elementos de Card */
+    text-align: center;
+    /* Separación entre elemento imagen*/
+    padding: 2rem;
+     /* Mayusculas*/
+    text-transform: uppercase;
+    
+}
+
+.contenido h3 {    
+    font-size: 0.9rem;
+    /* Interlineado */
+    line-height: 1.6rem;
+}
+p { 
+    line-height: 1.6rem;
+}
+a{
+    line-height: 1.6rem;
+    margin-top: 1rem;
+}
+.contenido span {
+    color: $spanColor;
+}
+
+
+.boton {
+    @include boton($botonColor, $blanco)    
+}
+
+@include telefono {
+    .contenido-principal {
+        display: flex; /*article quedan en row*/
+        flex-wrap: wrap;/*article queda en columna*/
+        /* para separar las imagenes justify-content: space-between;*/       
+        justify-content:space-around;
+        .entrada {
+            /*grow 0 para que no crezca, shrink 1 y basis crecerá como minímo del 50%*/
+            flex: 0 1 calc(50% - 1rem);
+        }
+    } 
+}
+
+@include tablet {
+     /* 3Columnas para Cards en modo Escritorio  */
+     .contenido-principal {
+        .entrada {
+            /*grow 0 para que no crezca, shrink 1 y basis crecerá como minímo del 50%*/
+            flex: 0 1 calc(33% - 1rem);
+        }
+    }
+}

@@ -1,0 +1,114 @@
+@charset "UTF-8";
+/*Colores*/
+/*Media Queries*/
+/*Fuentes*/
+/*Media Queries*/
+/*Botones*/
+body {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  /* Para que esté en la parte superior */
+  -webkit-box-flex: 0;
+  -ms-flex: 0  1 100%;
+  flex: 0  1 100%;
+  /* 0 para que no crezca y una base de 100%*/
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+h3 {
+  /* font de google */
+  font-family: Libre Baskerville, serif;
+  /* font google por default trae margin */
+  /* margin: 0; */
+  font-size: 1.8rem;
+}
+
+img {
+  max-width: 100%;
+  /*Con esto la imagen será responsive*/
+}
+
+.entrada {
+  margin-bottom: 1rem;
+  -webkit-box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.5);
+  box-shadow: 10px 10px 5px rgba(15, 15, 15, 0.5);
+}
+
+.contenido {
+  background-color: #fff;
+  /* centrar todos los elementos de Card */
+  text-align: center;
+  /* Separación entre elemento imagen*/
+  padding: 2rem;
+  /* Mayusculas*/
+  text-transform: uppercase;
+}
+
+.contenido h3 {
+  font-size: 0.9rem;
+  /* Interlineado */
+  line-height: 1.6rem;
+}
+
+p {
+  line-height: 1.6rem;
+}
+
+a {
+  line-height: 1.6rem;
+  margin-top: 1rem;
+}
+
+.contenido span {
+  color: #f80adc;
+}
+
+.boton {
+  background-color: #008fd1;
+  color: #fff;
+  padding: 0.6rem 3rem;
+  display: inline-block;
+  /* con esto respetara el padding definido*/
+  text-decoration: none;
+}
+
+@media (min-width: 480px) {
+  .contenido-principal {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /*article quedan en row*/
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /*article queda en columna*/
+    /* para separar las imagenes justify-content: space-between;*/
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+  .contenido-principal .entrada {
+    /*grow 0 para que no crezca, shrink 1 y basis crecerá como minímo del 50%*/
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 calc(50% - 1rem);
+    flex: 0 1 calc(50% - 1rem);
+  }
+}
+
+@media (min-width: 768px) {
+  /* 3Columnas para Cards en modo Escritorio  */
+  .contenido-principal .entrada {
+    /*grow 0 para que no crezca, shrink 1 y basis crecerá como minímo del 50%*/
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 calc(33% - 1rem);
+    flex: 0 1 calc(33% - 1rem);
+  }
+}

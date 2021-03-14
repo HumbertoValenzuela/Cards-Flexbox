@@ -1,0 +1,21 @@
+/*Media Queries*/
+@mixin telefono {
+    @media (min-width: #{$telefono}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$tablet}) {
+        @content;
+    }
+}
+
+/*Botones*/
+@mixin boton ($bgcolor, $color){
+    background-color: $bgcolor;
+    color: $color;
+    padding: 0.6rem 3rem;
+    display: inline-block; /* con esto respetara el padding definido*/
+    text-decoration: none;
+}
