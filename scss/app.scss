@@ -4,6 +4,7 @@
 body {
     box-sizing: border-box;
     background-color: $bodyBackground-color;
+    font-family: $fuentePrincipal;
 }
 
 .contenedor {
@@ -30,7 +31,93 @@ img {
     max-width: 100%;/*Con esto la imagen será responsive*/
 }
 
+/*Header*/
+.hero {
+    background-image: url(../img/hero.jpg);
+    /*todo el alto de la Pantalla*/
+    height: 100vh;
+    /*con norepeat queda del lado izquierdo*/
+    background-repeat: no-repeat;
+    /*queda centrado*/
+    background-position: center center;
+    /*Toma todo el espacio*/
+    background-size: cover;
+    /*Efecto imagen Fija*/
+    background-attachment:fixed;
+}
 
+.header {
+    display: flex;
+    position: relative;
+    /*cambia el axis.header y barra queda en el medio*/
+    flex-direction: column;   
+    justify-content: center;
+}
+
+.barra {
+    /*posicionar la barra arriba y header-contenido queda centrado*/
+    position: absolute;
+    background-color: $ColorPrimario;
+    width: 100%; 
+    top: 1rem;
+    padding: 1rem 0;
+        .contenedor {
+            display: flex;
+            flex-direction: column;    
+        }
+}
+
+
+
+@media screen and (min-width:'768px') {
+    .barra {
+        .contenedor {
+        flex-direction: row;  
+        justify-content: space-between;  
+        align-items: center;
+        }
+    }
+}
+/*aplica a las dos clases por separado .logo, .navegacion*/
+.logo, .navegacion {
+    text-align: center;
+}
+
+.navegacion ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width:'768px') {
+    .navegacion {
+        width: 20rem;
+        ul {       
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+    
+}
+
+.navegacion ul li a {
+    color: $blanco;
+    text-decoration: none;
+}
+.logo img {
+    max-width: 20rem;
+}
+
+.header-contenido {
+    h1 {
+        color: $ColorPrimario;
+        font-size: 2rem;
+        text-transform: uppercase;
+        width: 22rem;
+    }
+
+}
+/*Contenido*/
 
 .entrada {
         margin-bottom: 1rem;
@@ -66,7 +153,7 @@ a{
 
 
 .boton {
-    @include boton($botonColor, $blanco)    
+    @include boton($ColorPrimario, $blanco)    
 }
 
 @include telefono {
@@ -90,4 +177,123 @@ a{
             flex: 0 1 calc(33% - 1rem);
         }
     }
+}
+
+/*Categorias*/
+
+.categorias{
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        list-style: none;
+        
+        li{
+            flex: 1 0 50%;
+            padding: 2rem;
+            
+                &:nth-child(1) {
+                    background-color: $ColorPrimario;
+                }
+                &:nth-child(2) {
+                    background-color: $spanColor;
+                }
+                &:nth-child(3) {
+                    background-color: #9800d1;
+                }
+                &:nth-child(4) {
+                    background-color: #eca300;
+                }
+                    a {
+                        display: flex;
+                        flex-direction: column;
+                        color: $blanco;
+                        text-decoration: none;
+                        font-size: 1.3rem; 
+                        align-items: center; 
+                        i {
+                            font-size: 3rem;
+                            margin-bottom: 1rem;
+                        }
+                         
+                                           
+                    }
+        }
+    }
+}
+
+@include tablet {
+    .categorias ul li{
+        flex: 1;
+
+    }
+}
+
+/*Footer*/
+.footer {
+    background-color: $ColorPrimario;
+    padding-top: 1rem;
+    color: $blanco;
+    margin-top: .5rem;
+    h2 {
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+}
+
+@include tablet {
+    .footer .contenedor {
+        display: flex;
+        .caja {
+            flex: 1;            
+        }
+    }
+    .copyright {
+        background-color: #004;
+        text-align: center;
+        padding: 1rem 0;
+        margin: 0 0;
+    }
+
+}
+
+/* Redes Sociales */
+.sociales ul li span {
+    display:none;
+}
+.sociales ul {
+    display: flex;
+    justify-content:space-evenly    ;
+    list-style: none;
+    margin-top: 1rem;
+   
+}
+.sociales ul {
+    li {          
+        a {
+            text-decoration: none;
+                &:before {
+                /* La forma que se carga FonAwesome en la hoja de estilos */
+                /* Esto habilita los enlaces utilicen los iconos de FontAwesome */
+                font-family: "Font Awesome 5 Brands";
+                color: $blanco;
+                font-size: 2rem;  
+                }
+        } 
+    } 
+}
+.sociales ul li a[href*='facebook.com']::before {
+    content: "\f39e";
+}
+.sociales ul li a[href*='twitter.com']::before {
+    content: "\f099";
+}
+.sociales ul li a[href*='youtube.com']::before {
+    content: "\f167";
+}
+.sociales ul li a[href*='instagram.com']::before {
+    content: "\f16d";
+}
+.sociales ul li a[href*='github.com']::before {
+    content: "\f09b";
 }
